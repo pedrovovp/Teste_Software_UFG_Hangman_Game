@@ -31,6 +31,7 @@ public class Game {
 		return guess(s.charAt(0));
 	}
 
+
 	public boolean guess(char s){ //Taking  a Character
 		s= validateGuess(s);
 		boolean isHit= mAnswer.indexOf(s) >=0;

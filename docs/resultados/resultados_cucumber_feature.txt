@@ -1,0 +1,49 @@
+set 08, 2022 3:56:34 PM cucumber.api.cli.Main run
+ADVERTÊNCIA: You are using deprecated Main class. Please use io.cucumber.core.cli.Main
+
+@tag @tag1
+Scenario: jogador adivinha a palavra "teste" e vence o jogo                   # src/test/resources/ValidaHangman.feature:6
+  Given o jogo recebe a palavra "teste" para ser adivinhada                   # ValidaHangman.o_jogo_recebe_a_palavra_para_ser_adivinhada(java.lang.String)
+  When o jogador insere a letra "t"                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 6 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra "t"                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo informa que a letra ja foi adivinhada                           # ValidaHangman.o_jogo_informa_que_a_letra_ja_foi_adivinhada()
+  When o jogador insere a letra "e"                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 6 tentativas restantes para resolver: "te-te" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra "1"                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo pede para que o jogador envie uma letra                         # ValidaHangman.o_jogo_pede_para_que_o_jogador_envie_uma_letra()
+  When o jogador insere a letra ""                                            # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo informa que nenhuma letra foi enviada                           # ValidaHangman.o_jogo_informa_que_nenhuma_letra_foi_enviada()
+  When o jogador insere a letra "s"                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then O jogador vence o jogo, com 6 tentativas restantes                     # ValidaHangman.o_jogador_vence_o_jogo_com_tentativas_restantes(int)
+
+@tag @tag2
+Scenario: jogador não consegue adivinhar a palavra "teste" e perde o jogo     # src/test/resources/ValidaHangman.feature:22
+  Given o jogo recebe a palavra "teste" para ser adivinhada                   # ValidaHangman.o_jogo_recebe_a_palavra_para_ser_adivinhada(java.lang.String)
+  When o jogador insere a letra 'l'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 5 tentativas restantes para resolver: "-----" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 't'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 5 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 'k'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 4 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 'j'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 3 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 'h'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 2 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 'g'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then o jogo exibe seu estado: 1 tentativas restantes para resolver: "t--t-" # ValidaHangman.o_jogo_exibe_seu_estado_tentativas_restantes_para_resolver(int,java.lang.String)
+  When o jogador insere a letra 'f'                                           # ValidaHangman.o_jogador_insere_a_letra(java.lang.String)
+  Then O jogador perde o jogo                                                 # ValidaHangman.o_jogador_perde_o_jogo()
+
+2 Scenarios (2 passed)
+28 Steps (28 passed)
+0m0,785s
+
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ View your Cucumber Report at:                                            │
+│ https://reports.cucumber.io/reports/15c6182a-1c67-4dac-96ac-5d2ffb6e1568 │
+│                                                                          │
+│ This report will self-destruct in 24h.                                   │
+│ Keep reports forever: https://reports.cucumber.io/profile                │
+└──────────────────────────────────────────────────────────────────────────┘

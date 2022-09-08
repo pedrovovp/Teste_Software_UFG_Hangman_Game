@@ -16,35 +16,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void test01() {
-		boolean resultado = game.guess('r');
-		assertEquals(true, resultado);
-		
-		resultado = game2.guess('界');
-		assertEquals(true, resultado);
-	}
-	
-	@Test
-	public void test02() {
-		boolean resultado = game.guess('l');
-		assertEquals(false, resultado);
-		
-		resultado = game2.guess('セ');
-		assertEquals(false, resultado);
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test03() {
-		game.guess("");
-	}
-	
-	@Test(expected = NullPointerException.class)
-	public void test03_2() {
-		game.guess(null);
-	}
-
-	@Test
-	public void test04() {
+	public void case01_01() {
 		boolean resultado = game.guess("l");
 		assertEquals(false, resultado);
 		
@@ -53,7 +25,66 @@ public class GameTest {
 	}
 	
 	@Test
-	public void test05() {
+	public void case01_02() {
+		boolean resultado = game.guess("r");
+		assertEquals(true, resultado);
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void case01_03() {
+		game.guess("🤨️");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void case01_04() {
+		game.guess("");
+	}
+	
+	@Test
+	public void case02_01() {
+		boolean resultado = game.guess('r');
+		assertEquals(true, resultado);
+		
+		resultado = game2.guess('界');
+		assertEquals(true, resultado);
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void case02_02() {
+		game.guess('l');
+		game.guess('l');
+	}
+
+	
+	@Test(expected = NullPointerException.class)
+	public void case02_03() {
+		game.guess(null);
+	}
+	
+	@Test
+	public void case02_04() {
+		boolean resultado = game.guess('l');
+		assertEquals(false, resultado);
+		
+		resultado = game2.guess('セ');
+		assertEquals(false, resultado);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void case02_05() {
+		game.guess('1');
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void case02_06() {
+		game.guess('r');
+		game.guess('r');
+	}
+	
+	@Test
+	public void case03() {
 		game.guess('s');
 		game.guess('r');
 		String resultado = game.getCurrentProgress(); 
@@ -65,14 +96,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void test06() {
-		game.guess('l');
-		int resultado = game.getRemainingTries(); 
-		assertEquals(5, resultado);
-	}
-
-	@Test
-	public void test07() {
+	public void case04() {
 		game.guess('r');
 		game.guess('e');
 		game.guess('s');
@@ -89,42 +113,8 @@ public class GameTest {
 		assertEquals(true, resultado);
 	}
 	
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test08() {
-		game.guess('1');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test09() {
-		game.guess('r');
-		game.guess('r');
-	}
-	
 	@Test
-	public void test10() {
-		boolean resultado = game.guess("r");
-		assertEquals(true, resultado);
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test11() {
-		game.guess('l');
-		game.guess('l');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test11_2() {
-		game.guess('1');
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void test11_3() {
-		game.guess("🤨️");
-	}
-	
-	@Test
-	public void test12() {
+	public void case04_02() {
 		game.guess('r');
 		game.guess('e');
 		game.guess('s');
@@ -140,11 +130,19 @@ public class GameTest {
 	}
 	
 	@Test
-	public void test13() {
+	public void case05() {
 		String resultado = game.getAnswer();
 		assertEquals("resposta", resultado);
 		
 		resultado = game2.getAnswer();
 		assertEquals("世界", resultado);
 	}
+	
+	@Test
+	public void case06() {
+		game.guess('l');
+		int resultado = game.getRemainingTries(); 
+		assertEquals(5, resultado);
+	}	
+
 }

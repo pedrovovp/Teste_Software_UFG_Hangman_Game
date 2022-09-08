@@ -1,36 +1,37 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
 @tag
 Feature: Teste do Jogo da Forca (Hangman)
-	Funcionalidades da classe Game.java
+  Funcionalidades da classe Game.java
 
-	@tag1
-	Scenario: partida de jogo da forca com dois jogadores
-	Given eu insiro uma palavra <palavra> para o outro jogador adivinhar
-	When ele insere varias letras <letras>,
-	Then recebemos um retorno <resolvida> <tentativasRestantes>
+  @tag1
+  Scenario: jogador adivinha a palavra "teste" e vence o jogo
+    Given o jogo recebe a palavra "teste" para ser adivinhada
+    When o jogador insere a letra "t"
+    Then o jogo exibe seu estado: 6 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra "t"
+    Then o jogo informa que a letra ja foi adivinhada
+    When o jogador insere a letra "e"
+    Then o jogo exibe seu estado: 6 tentativas restantes para resolver: "te-te"
+    When o jogador insere a letra "1"
+    Then o jogo pede para que o jogador envie uma letra
+    When o jogador insere a letra ""
+    Then o jogo informa que nenhuma letra foi enviada
+    When o jogador insere a letra "s"
+    Then O jogador vence o jogo, com 6 tentativas restantes
 
-		Examples:
-			| palavra | letras | resolvida | tentativasRestantes |
-			| "resposta" | "respota" | true | 6 | 
-			| "世界" | "セ界世" | true | 5 |
-			| "resposta" | "reoicnamlk" | false | 0 |
-			| "resposta" | "reoicnamlkq" | false | -1 |
-			| "resposta" | "respot" | false | 6 |
-		
+  @tag2
+  Scenario: jogador não consegue adivinhar a palavra "teste" e perde o jogo
+    Given o jogo recebe a palavra "teste" para ser adivinhada
+    When o jogador insere a letra 'l'
+    Then o jogo exibe seu estado: 5 tentativas restantes para resolver: "-----"
+    When o jogador insere a letra 't'
+    Then o jogo exibe seu estado: 5 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra 'k'
+    Then o jogo exibe seu estado: 4 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra 'j'
+    Then o jogo exibe seu estado: 3 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra 'h'
+    Then o jogo exibe seu estado: 2 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra 'g'
+    Then o jogo exibe seu estado: 1 tentativas restantes para resolver: "t--t-"
+    When o jogador insere a letra 'f'
+    Then O jogador perde o jogo
